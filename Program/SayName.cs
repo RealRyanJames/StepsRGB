@@ -2,10 +2,7 @@ public class SayName
 {
     public const string Name = "| Color RGB Generator |\n";
 
-    public static string GetNamePerson()
-    {
-        return Name.ToUpper();
-    }
+    public static string GetNamePerson() => Name.ToUpper();
 
     public const int R = 255;
     public const int G = 255;

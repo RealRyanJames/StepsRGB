@@ -7,13 +7,15 @@ class App
     {
         if (args.Length < 3)
         {
+            Thread.Sleep(3 * Threads);
             Console.Write(SayName.GetNamePerson() + "\n");
+            
             Args.Get(printName);
-
             Init();
-
         }
     }
+
+    public static int Threads => 100 * 10;
 
     public static string printName()
     {
@@ -21,10 +23,7 @@ class App
         return Name("Hello User Welcome");
     }
 
-    public static string Name(string name)
-    {
-        return name + "\n";
-    }
+    public static string Name(string name) => name + "\n";
 
     public static void Init()
     {
