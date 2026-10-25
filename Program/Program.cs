@@ -5,17 +5,30 @@ class App
     private static readonly Random color = new();
     public static void Main(string[] args)
     {
-        if (args.Length.Equals(0))
+        if (args.Length < 3)
         {
+            Console.Write(SayName.GetNamePerson() + "\n");
+            Args.Get(printName);
 
             Init();
+
         }
+    }
+
+    public static string printName()
+    {
+        Console.WriteLine("-------------------------------");
+        return Name("Hello User Welcome");
+    }
+
+    public static string Name(string name)
+    {
+        return name + "\n";
     }
 
     public static void Init()
     {
 
-        Console.WriteLine(SayName.GetNamePerson());
         var red = color.Next(0, SayName.R);
         var green = color.Next(0, SayName.G);
         var blue = color.Next(0, SayName.B);
@@ -25,7 +38,9 @@ class App
         Converted.GHex = green;
         Converted.BHex = blue;
 
+        Console.WriteLine("\n");
         Console.WriteLine($"{Converted.ConvertingR()} {Converted.ConvertingG()} {Converted.ConvertingB()}");
+
 
         Console.ReadLine();
 
