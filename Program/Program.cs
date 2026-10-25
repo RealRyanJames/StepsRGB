@@ -1,4 +1,5 @@
 ﻿using Program;
+using Program.Files;
 
 class App
 {
@@ -10,14 +11,14 @@ class App
             Thread.Sleep(3 * Threads);
             Console.Write(SayName.GetNamePerson() + "\n");
             
-            Args.Get(printName);
+            Args.Get(PrintName);
             Init();
         }
     }
 
     public static int Threads => 100 * 10;
 
-    public static string printName()
+    public static string PrintName()
     {
         Console.WriteLine("-------------------------------");
         return Name("Hello User Welcome");
@@ -32,14 +33,49 @@ class App
         var green = color.Next(0, SayName.G);
         var blue = color.Next(0, SayName.B);
 
-        Console.WriteLine($"R: {red}, G: {green}, B: {blue}");
-        Converted.RHex = red;
-        Converted.GHex = green;
-        Converted.BHex = blue;
+        string Option = "Y | N";
+        char optionsReader = Option.First();
 
-        Console.WriteLine("\n");
-        Console.WriteLine($"{Converted.ConvertingR()} {Converted.ConvertingG()} {Converted.ConvertingB()}");
+        Console.WriteLine("Enter Y | N: ");
+        optionsReader = Console.ReadKey().KeyChar;
 
+        string messageHex = $"R: {red}, G: {green}, B: {blue}";
+        string hexMessage = $"{Converted.ConvertingR()} {Converted.ConvertingG()} {Converted.ConvertingB()}";
+
+        switch (optionsReader)
+        {
+            case 'N':
+
+                Console.WriteLine($"R: {red}, G: {green}, B: {blue}");
+                Converted.RHex = red;
+                Converted.GHex = green;
+                Converted.BHex = blue;
+
+                Console.WriteLine("\n");
+                Console.WriteLine($"{Converted.ConvertingR()} {Converted.ConvertingG()} {Converted.ConvertingB()}");
+
+                messageHex = $"R: {red}, G: {green}, B: {blue}";
+                hexMessage = $"{Converted.ConvertingR()} {Converted.ConvertingG()} {Converted.ConvertingB()}";
+
+
+                FileWrite.Write(messageHex: messageHex, colorMessage: hexMessage);
+
+                break;
+
+            case 'Y':
+
+                Console.WriteLine($"R: {red}, G: {green}, B: {blue}");
+                Converted.RHex = red;
+                Converted.GHex = green;
+                Converted.BHex = blue;
+
+                Console.WriteLine("\n");
+                Console.WriteLine($"{Converted.ConvertingR()} {Converted.ConvertingG()} {Converted.ConvertingB()}");
+
+                break;
+        }
+
+        FileWrite.Write(messageHex: messageHex, colorMessage: hexMessage);
 
         Console.ReadLine();
 
