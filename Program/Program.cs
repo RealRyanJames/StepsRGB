@@ -72,10 +72,11 @@ class App
                 Console.WriteLine("\n");
                 Console.WriteLine($"{Converted.ConvertingR()} {Converted.ConvertingG()} {Converted.ConvertingB()}");
 
+                FileWrite.Write(messageHex: messageHex, colorMessage: hexMessage);
+
                 break;
         }
 
-        FileWrite.Write(messageHex: messageHex, colorMessage: hexMessage);
 
         Console.ReadLine();
 
