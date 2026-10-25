@@ -1,19 +1,33 @@
-﻿class App
+﻿using Program;
+
+class App
 {
     private static readonly Random color = new();
-    static void Main()
+    public static void Main(string[] args)
     {
-        Console.WriteLine(SayName.GetNamePerson());
+        if (args.Length.Equals(0))
+        {
 
-        int red = color.Next(0, SayName.R);
-        int green = color.Next(0, SayName.G);
-        int blue = color.Next(0, SayName.B);
-        
+            Init();
+        }
+    }
+
+    public static void Init()
+    {
+
+        Console.WriteLine(SayName.GetNamePerson());
+        var red = color.Next(0, SayName.R);
+        var green = color.Next(0, SayName.G);
+        var blue = color.Next(0, SayName.B);
+
         Console.WriteLine($"R: {red}, G: {green}, B: {blue}");
+        Converted.RHex = red;
+        Converted.GHex = green;
+        Converted.BHex = blue;
+
+        Console.WriteLine($"{Converted.ConvertingR()} {Converted.ConvertingG()} {Converted.ConvertingB()}");
+
         Console.ReadLine();
 
     }
-
-
 }
-
